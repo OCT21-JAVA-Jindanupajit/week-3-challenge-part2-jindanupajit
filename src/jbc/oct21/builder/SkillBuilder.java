@@ -1,7 +1,12 @@
 package jbc.oct21.builder;
 
 import jbc.oct21.ExtendsType.SkillName;
+import jbc.oct21.ExtendsType.SkillProficiency;
+import jbc.oct21.ExtendsType.YesNo;
 import jbc.oct21.model.Skill;
+
+import java.io.InputStream;
+import java.io.PrintStream;
 
 public class SkillBuilder extends Builder {
     Skill skill = new Skill();
@@ -31,7 +36,31 @@ public class SkillBuilder extends Builder {
         return this;
     }
 
+    public SkillBuilder set(SkillProficiency skillProficiency) {
+        this.skill.setProficiency(skillProficiency.getValue());
+        return this;
+    }
+
     public Skill toSkill() {
         return skill;
+    }
+
+
+
+    @Override
+    public void auto(PrintStream printStream, InputStream inputStream) {
+        YesNo askUserYesOrNo = new YesNo();
+
+            SkillName skillName = new SkillName();
+            skillName.retrieve(printStream, inputStream);
+
+            this.set(skillName);
+
+            SkillProficiency skillProficiency = new SkillProficiency();
+            skillProficiency.retrieve(printStream, inputStream);
+
+           this.set(skillProficiency);
+
+
     }
 }

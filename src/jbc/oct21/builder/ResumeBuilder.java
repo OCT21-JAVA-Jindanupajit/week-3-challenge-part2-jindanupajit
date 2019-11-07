@@ -1,7 +1,11 @@
 package jbc.oct21.builder;
 
 import jbc.oct21.ExtendsType.*;
+import jbc.oct21.Interface.UserInput;
 import jbc.oct21.model.*;
+
+import java.io.InputStream;
+import java.io.PrintStream;
 
 public class ResumeBuilder extends Builder {
 
@@ -55,5 +59,65 @@ public class ResumeBuilder extends Builder {
 
     public Resume toResume() {
         return resume;
+    }
+
+    @Override
+    public void auto(PrintStream printStream, InputStream inputStream) {
+        YesNo askUserYesOrNo = new YesNo();
+
+        printStream.println("\nResume Input\n");
+
+
+        FirstName firstName = new FirstName();
+        firstName.retrieve(printStream, inputStream);
+
+        MiddleName middleName = new MiddleName();
+        middleName.retrieve(printStream, inputStream);
+
+        LastName lastName = new LastName();
+        lastName.retrieve(printStream, inputStream);
+
+        this.set(new Name(firstName, middleName, lastName));
+
+        Email email = new Email();
+        email.retrieve(printStream, inputStream);
+
+        this.set(email);
+
+        printStream.println("\nEducation Input\n");
+        do {
+            EducationBuilder educationBuilder = new EducationBuilder();
+            educationBuilder.auto(printStream, inputStream);
+            this.append(educationBuilder.toEducation());
+            printStream.print("\nMore Education ");
+            askUserYesOrNo.retrieve(printStream, inputStream);
+        } while(askUserYesOrNo.isYes());
+
+        printStream.println("\nExperience Input\n");
+        do {
+            ExperienceBuilder experienceBuilder = new ExperienceBuilder();
+            experienceBuilder.auto(printStream, inputStream);
+            this.append(experienceBuilder.toExperience());
+            printStream.print("\nMore Experience ");
+            askUserYesOrNo.retrieve(printStream, inputStream);
+        } while(askUserYesOrNo.isYes());
+
+        printStream.println("\nSkill Input\n");
+        do {
+            SkillBuilder skillBuilder = new SkillBuilder();
+            skillBuilder.auto(printStream, inputStream);
+            this.append(skillBuilder.toSkill());
+
+            do {
+                printStream.print("\nMore Skill ");
+                askUserYesOrNo.retrieve(printStream, inputStream);
+                if (askUserYesOrNo.isNo() && this.resume.getSkillCollection().size() < 3)
+                    printStream.printf("\n * You need at least 3 skills, now %d!\n", this.resume.getSkillCollection().size());
+                else
+                    break;
+            } while(true);
+
+        } while(askUserYesOrNo.isYes());
+
     }
 }

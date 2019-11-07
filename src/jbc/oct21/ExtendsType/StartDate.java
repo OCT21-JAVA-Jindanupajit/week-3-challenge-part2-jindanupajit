@@ -1,12 +1,12 @@
 package jbc.oct21.ExtendsType;
 
-import java.util.Date;
+import java.time.YearMonth;
 
 public class StartDate extends MonthYear {
     public StartDate() {
     }
 
-    public StartDate(Date value) {
+    public StartDate(YearMonth value) {
         super(value);
     }
 }

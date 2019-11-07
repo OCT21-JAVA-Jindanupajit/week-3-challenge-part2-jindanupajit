@@ -25,7 +25,6 @@ public class ExperienceCollection extends ArrayList<Experience> {
             sb.append(eachExperience);
         });
 
-        sb.append("\n");
 
         return sb.toString();
     }

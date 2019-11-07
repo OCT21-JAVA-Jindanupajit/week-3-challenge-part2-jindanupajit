@@ -3,8 +3,11 @@ package jbc.oct21.builder;
 import jbc.oct21.ExtendsType.GraduationYear;
 import jbc.oct21.ExtendsType.Major;
 import jbc.oct21.ExtendsType.University;
-import jbc.oct21.model.DegreeType;
+import jbc.oct21.ExtendsType.DegreeType;
 import jbc.oct21.model.Education;
+
+import java.io.InputStream;
+import java.io.PrintStream;
 
 public class EducationBuilder extends Builder {
 
@@ -47,5 +50,24 @@ public class EducationBuilder extends Builder {
 
     public Education toEducation() {
         return education;
+    }
+
+    @Override
+    public void auto(PrintStream printStream, InputStream inputStream) {
+        DegreeType degreeType = new DegreeType();
+        degreeType.retrieve(printStream,inputStream);
+        this.set(degreeType);
+
+        Major major = new Major();
+        major.retrieve(printStream, inputStream);
+        this.set(major);
+
+        University university = new University();
+        university.retrieve(printStream, inputStream);
+        this.set(university);
+
+        GraduationYear graduationYear = new GraduationYear();
+        graduationYear.retrieve(printStream, inputStream);
+        this.set(graduationYear);
     }
 }

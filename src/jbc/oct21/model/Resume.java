@@ -4,8 +4,8 @@ import jbc.oct21.ExtendsType.*;
 
 public class Resume {
     private final Name name = new Name();
-    private Email email;
-    private Phone phone;
+    private Email email = new Email();
+    private Phone phone = new Phone();
     private final EducationCollection educationCollection = new EducationCollection();
     private final ExperienceCollection experinceCollection = new ExperienceCollection();
     private final SkillCollection skillCollection = new SkillCollection();
@@ -57,5 +57,22 @@ public class Resume {
 
     public SkillCollection getSkillCollection() {
         return skillCollection;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 80; i++) {
+            sb.append("=");
+        }
+        sb.append("\n\n");
+        sb.append(name).append("\n")
+                .append(email).append("\n")
+                .append(phone).append("\n\n")
+                .append(educationCollection).append("\n")
+                .append(experinceCollection).append("\n")
+                .append(skillCollection).append("\n");
+
+        return sb.toString();
     }
 }

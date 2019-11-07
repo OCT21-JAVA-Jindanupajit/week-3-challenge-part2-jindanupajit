@@ -1,40 +1,44 @@
 package jbc.oct21.model;
 
+import jbc.oct21.ExtendsType.FirstName;
+import jbc.oct21.ExtendsType.LastName;
+import jbc.oct21.ExtendsType.MiddleName;
+
 public class Name {
-    private String first;
-    private String middle;
-    private String last;
+    private FirstName first;
+    private MiddleName middle;
+    private LastName last;
 
     public Name() {
     }
 
-    public Name(String first, String middle, String last) {
+    public Name(FirstName first, MiddleName middle, LastName last) {
         this.first = first;
         this.middle = middle;
         this.last = last;
     }
 
-    public String getFirst() {
+    public FirstName getFirst() {
         return first;
     }
 
-    public void setFirst(String first) {
+    public void setFirst(FirstName first) {
         this.first = first;
     }
 
-    public String getMiddle() {
+    public MiddleName getMiddle() {
         return middle;
     }
 
-    public void setMiddle(String middle) {
+    public void setMiddle(MiddleName middle) {
         this.middle = middle;
     }
 
-    public String getLast() {
+    public LastName getLast() {
         return last;
     }
 
-    public void setLast(String last) {
+    public void setLast(LastName last) {
         this.last = last;
     }
 

@@ -1,12 +1,12 @@
 package jbc.oct21.model;
 
-public class DegreeType {
+public class ComplexDegreeType {
     private String label;
 
-    public DegreeType() {
+    public ComplexDegreeType() {
     }
 
-    public DegreeType(String label) {
+    public ComplexDegreeType(String label) {
         this.label = label;
     }
 

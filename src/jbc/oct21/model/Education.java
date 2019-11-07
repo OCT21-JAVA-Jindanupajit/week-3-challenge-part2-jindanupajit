@@ -1,15 +1,16 @@
 package jbc.oct21.model;
 
+import jbc.oct21.ExtendsType.DegreeType;
 import jbc.oct21.ExtendsType.GraduationYear;
 import jbc.oct21.ExtendsType.Major;
 import jbc.oct21.ExtendsType.University;
-import jbc.oct21.ExtendsType.Year;
+
 
 public class Education {
-    private DegreeType degreeType;
-    private Major major;
-    private University university;
-    private GraduationYear graduationYear;
+    private DegreeType degreeType = new DegreeType();
+    private Major major = new Major();
+    private University university = new University();
+    private GraduationYear graduationYear = new GraduationYear();
 
     public Education() {
     }
@@ -63,8 +64,7 @@ public class Education {
                 .append("\n")
           .append(university)
                 .append(", ")
-                .append(graduationYear)
-                .append("\n");
+                .append(graduationYear);
 
         return sb.toString();
     }

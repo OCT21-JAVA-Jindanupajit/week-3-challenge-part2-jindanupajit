@@ -1,6 +1,7 @@
 package jbc.oct21.model;
 
 import jbc.oct21.ExtendsType.SkillName;
+import jbc.oct21.ExtendsType.SkillProficiency;
 
 public class Skill {
 
@@ -32,6 +33,11 @@ public class Skill {
     public Skill(SkillName name, Proficiency proficiency) {
         this.name = name;
         this.proficiency = proficiency;
+    }
+
+    public Skill(SkillName name, SkillProficiency proficiency) {
+        this.name = name;
+        this.proficiency = proficiency.getValue();
     }
 
     public SkillName getName() {

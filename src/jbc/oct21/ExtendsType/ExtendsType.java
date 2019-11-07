@@ -1,6 +1,10 @@
 package jbc.oct21.ExtendsType;
 
-public class ExtendsType <T> {
+import jbc.oct21.Interface.UserInput;
+
+import java.io.InputStream;
+
+public abstract class ExtendsType <T> implements UserInput<T> {
     private T value;
 
     public ExtendsType() {
@@ -22,4 +26,5 @@ public class ExtendsType <T> {
     public String toString() {
         return value.toString();
     }
+
 }
