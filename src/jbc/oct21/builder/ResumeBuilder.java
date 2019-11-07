@@ -87,6 +87,11 @@ public class ResumeBuilder extends Builder {
 
         this.set(email);
 
+        Phone phone = new Phone();
+        phone.retrieve(printStream, inputStream);
+
+        this.set(phone);
+
         printStream.println("\nEducation Input\n");
         do {
             EducationBuilder educationBuilder = new EducationBuilder();
