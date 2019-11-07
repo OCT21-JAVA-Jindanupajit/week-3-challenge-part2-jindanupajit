@@ -5,8 +5,20 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+// Most ExtendsType will have UserInput specification
+// such as validation, data casting (and storing),
+// toString conversion
+
+// we direct the builder how to interact with user here
+// other special specification will be in ExtendsType package
+//  eg, each ExtendsType can have special instruction how to
+//  interact with user, see ExtendsType for more information
+//  ExtendsType will implements this interface
+
+
 public interface UserInput <T> {
 
+    // customize your prompt here
     default String  prompt() {
         StringBuilder sb = new StringBuilder();
         String guide = guide();
@@ -18,6 +30,8 @@ public interface UserInput <T> {
         return sb.toString();
     }
 
+    // ****** The actual interaction with user happened here
+    // sub class should attempt to override other methods before this method
     default T retrieve(PrintStream printStream, InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream);
 
@@ -49,14 +63,19 @@ public interface UserInput <T> {
         return store(value);
     }
 
+    // will display as a prompt for user input
     default String typeName() {
         return getClass().getSimpleName();
     }
+
+    // will display as a guide for user input
     default String guide() {
         return null;
     }
 
+    // required: how each type cast from string and store it
     public T store(String string) ;
 
+    // required: is that string a valid input?
     public boolean isValidValue(String string);
 }

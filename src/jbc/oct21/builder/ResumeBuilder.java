@@ -61,7 +61,10 @@ public class ResumeBuilder extends Builder {
         return resume;
     }
 
-    @Override
+
+    // This method will auto populate data from user input
+    // and hand over to appropriate builder, if needed
+    @Override // see super class for more information
     public void auto(PrintStream printStream, InputStream inputStream) {
         YesNo askUserYesOrNo = new YesNo();
 

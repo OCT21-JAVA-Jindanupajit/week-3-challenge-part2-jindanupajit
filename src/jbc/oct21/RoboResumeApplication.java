@@ -9,5 +9,6 @@ public class RoboResumeApplication implements Runnable {
     public void run() {
         MainController mainController = new MainController();
         mainController.mainMenu();
+        // See MainController.mainMenu() in package jbc.oct21.controller
     }
 }

@@ -6,5 +6,6 @@ public class Main {
         // Run as single-thread
         RoboResumeApplication roboResumeApplication = new RoboResumeApplication();
         roboResumeApplication.run();
+        // See RoboResumeApplication.java
     }
 }

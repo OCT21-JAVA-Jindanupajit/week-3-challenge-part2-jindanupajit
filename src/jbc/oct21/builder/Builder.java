@@ -1,10 +1,11 @@
 package jbc.oct21.builder;
 
-import jbc.oct21.Interface.UserInput;
-import jdk.internal.util.xml.impl.Input;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+
+// Builder interact with user and model via interface "UserInput"
+// see jbc.oct21.Interface.UserInput for more information
 
 public abstract class Builder {
 
